@@ -11,6 +11,7 @@ import java.util.logging.Logger;
  */
 public class StringFile extends javax.swing.JFrame {
 
+    //Class Instanciation
     AlphabetShifter as = new AlphabetShifter();
     File textFile = new File("newFile.txt");
     
@@ -165,23 +166,29 @@ public class StringFile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReadActionPerformed
 
-    //Write to file
+    //===Write to file function===
     public void writeFile() throws IOException{      
         as.writeToFile(textFile, txtPrintText.getText());
         txtPrintText.setText("");
     }
     
+    //====Read from file function===
     public void readFile() throws IOException{        
+        //Display text from a file in a text area control
         txtPrintText.append(as.readFromFile(textFile));
     }
     
-    //Demonstrates a string encryption
-    public void alphabetShifter(){       
+    //====Demonstrates a string encryption===
+    public void alphabetShifter(){
+        //====User input text====       
        //String encrypted = as.encode(txtInput.getText());
        
+       //User hardcoded text
        int i = (int) (Math.random()*15);
        as.setShifted(i);
        String encrypted = as.encode(as.getShifted());
+       
+       //Display results in a text area
        txtPrintText.append("\nEncoded text\n\t" + encrypted + "\nDecoded\n\t" + as.decode(encrypted));
     }
     
